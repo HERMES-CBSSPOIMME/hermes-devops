@@ -7,8 +7,8 @@ services:
     image: wave/vernemq
     restart: always
     ports:
-      - "1883:1883"
-      - "8080:8080"
+      - "${DOCKER_BINDING_IP:-127.0.0.1}:1883:1883"
+      - "${DOCKER_BINDING_IP:-127.0.0.1}:8080:8080"
     container_name: wave_vernemq
     links:
       - mongodb
@@ -24,7 +24,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     ports:
-      - "27017:27017"
+      - "${DOCKER_BINDING_IP:-127.0.0.1}:27017:27017"
     volumes:
        - $HOME/data:/data/db
     networks:
@@ -35,7 +35,7 @@ services:
     container_name: wave_mongoexpress
     restart: always
     ports:
-      - "8081:8081"
+      - "${DOCKER_BINDING_IP:-127.0.0.1}:8081:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
@@ -51,7 +51,7 @@ services:
     command: redis-server /usr/local/etc/redis/redis.conf
     container_name: wave_redis-sessions-cache
     ports:
-      - "6379:6379"
+      - "${DOCKER_BINDING_IP:-127.0.0.1}:6379:6379"
     restart: always
     networks:
       - wave
@@ -62,7 +62,7 @@ services:
     command: redis-server /usr/local/etc/redis/redis.conf
     container_name: wave_redis-real-time
     ports:
-      - "6380:6379"
+      - "${DOCKER_BINDING_IP:-127.0.0.1}:6380:6379"
     restart: always
     networks:
       - wave

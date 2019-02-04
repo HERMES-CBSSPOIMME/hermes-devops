@@ -1,6 +1,6 @@
-# HERMES DevOps
+# Wave DevOps
 
-This repository includes all DevOps necessary configs & templates to easily run HERMES instant messaging services instances in your chosen environment.
+This repository includes all DevOps necessary configs & templates to easily run Wave instant messaging services instances in your chosen environment.
 
 # Running Dev Environment
 

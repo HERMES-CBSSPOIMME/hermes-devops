@@ -67,6 +67,15 @@ services:
     networks:
       - wave
 
+  management-service:
+    image: waveim/management-service:demo
+    container_name: wave_messaging-management-service
+    restart: always
+    ports:
+      - "8085:8085"
+    networks:
+      - wave
+
 networks:
   wave:
     driver: "bridge"

@@ -4,18 +4,12 @@ version: '3'
 services:
   vernemq:
     build: vernemq/
-    image: waveim/vernemq
+    image: wave/vernemq
     restart: always
     ports:
-<<<<<<< HEAD
       - "${DOCKER_BINDING_IP:-127.0.0.1}:1883:1883"
       - "${DOCKER_BINDING_IP:-127.0.0.1}:8080:8080"
     container_name: wave_vernemq
-=======
-      - "1883:1883"
-      - "8080:8080"
-    container_name: wave-vernemq
->>>>>>> terraform
     links:
       - mongodb
     networks:
@@ -23,9 +17,9 @@ services:
 
   mongodb:
     build: mongodb/
-    image: waveim/mongo
+    image: wave/mongo
     restart: always
-    container_name: wave-mongodb
+    container_name: wave_mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -38,7 +32,7 @@ services:
 
   mongo-express:
     image: mongo-express
-    container_name: wave-mongoexpress
+    container_name: wave_mongoexpress
     restart: always
     ports:
       - "${DOCKER_BINDING_IP:-127.0.0.1}:8081:8081"
@@ -53,7 +47,7 @@ services:
 
   redis-sessions-cache:
     build: redis/
-    image: waveim/redis
+    image: wave/redis
     command: redis-server /usr/local/etc/redis/redis.conf
     container_name: wave_redis-sessions-cache
     ports:
@@ -64,9 +58,9 @@ services:
 
   redis-real-time:
     build: redis/
-    image: waveim/redis
+    image: wave/redis
     command: redis-server /usr/local/etc/redis/redis.conf
-    container_name: wave-redis-real-time
+    container_name: wave_redis-real-time
     ports:
       - "${DOCKER_BINDING_IP:-127.0.0.1}:6380:6379"
     restart: always

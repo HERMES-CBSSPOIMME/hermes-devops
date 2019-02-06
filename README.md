@@ -28,6 +28,12 @@ You can then launch the deployment by executing
 
 `./deployment.sh`
 
+If you later need to scale up you can modify the replicas field of the corresponding deployment file.
+
+You can then apply those change by runnig
+
+`kubectl apply -f the_deployment_file_you_just_modified`
+
 ## Running Dev Environment
 
 Default host binding IP is : 127.0.0.1
